@@ -114,6 +114,7 @@ For any requests, please contact %admin_email%';
 			$this->options = array(
 				'from_email'         => '',
 				'from_name'          => '',
+				'from_defaults_only' => '1',
 				'template'           => $template,
 				'plaintext_template' => $plaintext
 			);
@@ -260,6 +261,9 @@ For any requests, please contact %admin_email%';
 			// Check name
 			$input['from_name'] = esc_html( $input['from_name'] );
 
+			// Check defaults checkbox
+			$input['from_defaults_only'] = intval( $input['from_defaults_only'] );
+
 			/** Check HTML template *****************************************/
 
 			// Template is empty
@@ -396,6 +400,17 @@ For any requests, please contact %admin_email%';
 		 * @return string
 		 */
 		function set_from_email( $from_email ) {
+			// How wordpress sets the default email address
+			$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+			if ( substr( $sitename, 0, 4 ) == 'www.' ) {
+				$sitename = substr( $sitename, 4 );
+			}
+
+			$default_from_email = 'wordpress@' . $sitename;
+
+			if ( $this->options['from_defaults_only'] && strtolower($from_email) !== $default_from_email )
+				return $from_email;
+
 			if ( ! empty( $this->options['from_email']) && is_email( $this->options['from_email'] ) )
 				return $this->options['from_email'];
 
@@ -410,6 +425,9 @@ For any requests, please contact %admin_email%';
 		 * @return string
 		 */
 		function set_from_name( $from_name ) {
+			if ( $this->options['from_defaults_only'] && $from_name !== "WordPress" )
+				return $from_name;
+
 			if ( ! empty( $this->options['from_name'] ) )
 				return wp_specialchars_decode( $this->options['from_name'], ENT_QUOTES );
 

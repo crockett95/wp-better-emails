@@ -16,8 +16,20 @@
 				<th scope="row"><label for="wpbe_from_email"><?php _e('Email address', 'wp-better-emails'); ?></label></th>
 				<td><input type="text" id="wpbe_from_email" class="regular-text" name="wpbe_options[from_email]" value="<?php echo esc_attr_e($this->options['from_email']); ?>" /></td>
 			</tr>
+			<tr valign="top">
+				<th scope="row"><?php _e('Defaults only?', 'wp-better-emails'); ?></th>
+				<td>
+					<fieldset><legend class="screen-reader-text"><span><?php _e('Defaults only?', 'wp-better-emails'); ?></span></legend>
+						<label for="wpbe_from_defaults_only">
+							<input name="wpbe_options[from_defaults_only]" type="checkbox" id="wpbe_from_defaults_only" value="1" <?php echo ($this->options['from_defaults_only'] ? 'checked="checked"' : ''); ?>>
+							<?php _e('Only override default settings', 'wp-better-emails'); ?>
+						</label>
+						<p class="description"><?php _e('Check this box to only override the default Wordpress settings. This can help with interference with other plugins', 'wp-better-emails'); ?></p>
+					</fieldset>
+				</td>
+			</tr>
 		</table>
-
+		
 		<!-- Template -->
 		<h3 class="wpbe_title"><?php _e('HTML Template', 'wp-better-emails'); ?>
 		<?php if( version_compare($wp_version, '3.1', '>') ): ?>
