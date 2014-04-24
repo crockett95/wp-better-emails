@@ -1,12 +1,14 @@
 <?php
 /*
 Plugin Name: WP Better Emails
-Plugin URI: http://wordpress.org/extend/plugins/wp-better-emails/
+Plugin URI: https://github.com/crockett95/wp-better-emails
 Description: Beautify the default text/plain WP mails into fully customizable HTML emails.
 Version: 0.2.6.5
-Author: ArtyShow
-Author URI: http://wordpress.org/extend/plugins/wp-better-emails/
-License: GPLv2
+Author: crockett95
+Author URI: https://github.com/crockett95
+License: GPL-2.0+
+GitHub Plugin URI: crockett95/wp-better-emails
+GitHub Access Token: bf77f6ce0aae0c42845bb8fe42b2257fd4c4aa83
  */
 
 /*
