@@ -3,7 +3,7 @@
 Plugin Name: WP Better Emails
 Plugin URI: http://wordpress.org/extend/plugins/wp-better-emails/
 Description: Beautify the default text/plain WP mails into fully customizable HTML emails.
-Version: 0.2.6.4
+Version: 0.2.6.5
 Author: ArtyShow
 Author URI: http://wordpress.org/extend/plugins/wp-better-emails/
 License: GPLv2
@@ -613,10 +613,11 @@ For any requests, please contact %admin_email%';
 				$settings = array(
 					'wpautop'      => false,
 					'editor_class' => 'wpbe_template',
-					'quicktags'    => false
+					'quicktags'    	=> false,
+					'textarea_name' => 'wpbe_options[template]'
 				);
 
-				wp_editor( $this->options['template'], 'wpbe_options[template]', $settings );
+				wp_editor( $this->options['template'], 'wpbe_template', $settings );
 			}
 		}
 
