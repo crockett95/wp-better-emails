@@ -387,6 +387,9 @@ For any requests, please contact %admin_email%';
 		function set_email_template( $body, $type = 'template' ) {
 			$template = '';
 
+			//	Avoid sending blank emails
+			if ( empty( $body ) || preg_match( "/^\s*$/", $body ) ) return $body;
+
 			if ( isset( $this->options[$type] ) && ! empty( $this->options[$type] ) ) {
 				$template .= $this->options[$type];
 			}
